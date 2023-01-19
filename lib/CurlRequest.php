@@ -171,6 +171,8 @@ class CurlRequest
      */
     protected static function processRequest($ch)
     {
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         # Check for 429 leaky bucket error
         while (1) {
             $output   = curl_exec($ch);
